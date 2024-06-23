@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background: linear-gradient(to left bottom, lightgreen,  lightblue);
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            background: rgba(255, 255, 255, .3);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 5px;
+            box-shadow:  0 10px 10px rgba(0, 0, 0, .3);
+            margin: 5px;
+        }
+        .heading{
+            font-size: 30px;
+        }
+        input{
+            padding: 10px 20px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, .4);
+            border-color: rgba(255, 255, 255, .5);
+            margin: 10px 0;
+        }
+        .btn{
+            background: lightgreen;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            margin:10px 0;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Body Mass Index (BMI) Calculator</h1>
+        Your height (cm):
+        <input type="number" id="height" value="180" placeholder="enter your height in cm">
+        Your weight (kg):
+        <input type="number" id="weight" value="70" placeholder="enter your weight in cm">
+        <button class="btn">
+            Calculate BMI
+        </button>
+        Your BMI:
+        <input  ="text" class="input">
+        <h4 class="info-text">
+            Weight Condition: <span class="weight-condition"></span>
+        </h4>
+    </div>
+    <script>
+        const btn=document.querySelector(".btn")
+        const bmiOutput=document.querySelector(".input")
+        const span=document.querySelector(".weight-condition")
+        btn.addEventListener("click",()=>{
+            const heightValue=document.querySelector("#height").value/100
+            const weightValue=document.querySelector("#weight").value
+
+            const bmiValue=weightValue/(heightValue*heightValue)
+            bmiOutput.value=bmiValue
+             if(bmiValue<18.5){
+                span.innerHTML="Under Weight"
+             }
+             else if(bmiValue>=18.5 && bmiValue<=24.9){
+                span.innerHTML="Normal Weight"
+             }
+             else{
+                span.innerHTML="Over Weight"
+             }
+
+
+        })
+
+    </script>
+</body>
+</html>
